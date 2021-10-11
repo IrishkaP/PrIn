@@ -26,6 +26,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent * event) override;
 
     void drawEdge(QPainter & painter, Node * from, Node * to, float node_radius);
+    Node * getHowerNode(QVector3D point);
 
 private:
     NodeGraph * _graph = nullptr;
@@ -34,6 +35,7 @@ private:
     QPointF _offset;
 
     bool _mouse_dragging = false;
+    bool _mouse_dragging_l = false;
     QPoint _start_drag;
     QPoint _start_offset;
 
