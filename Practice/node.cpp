@@ -27,3 +27,8 @@ float Node::lengthToNeighbour(const Node *neighbour) const
 {
     return (position() - neighbour->position()).length();
 }
+
+void Node::setPosition(const QVector3D &position)
+{
+    _position = position;
+}

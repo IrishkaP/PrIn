@@ -2,6 +2,7 @@
 #include <QPainter>
 #include <QWheelEvent>
 #include <iostream>
+#include <graphtool.h>
 
     const float node_radius = 10;
     static Node * nol;
@@ -73,6 +74,16 @@ Node *NodeGraphWidget::getHowerNode(QVector3D point)
     return nullptr;
 }
 
+void NodeGraphWidget::setTool(std::shared_ptr<GraphTool> tool)
+{
+    _currentTool = tool;
+}
+
+float NodeGraphWidget::scale() const
+{
+    return _scale;
+}
+
 void NodeGraphWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -100,6 +111,7 @@ void NodeGraphWidget::paintEvent(QPaintEvent *event)
             drawEdge(painter, node,neighbour, node_radius);
         }
     }
+    if (_currentTool) _currentTool->onPaint(&painter);
 }
 
 static float clamp(float value, float min, float max)
@@ -119,6 +131,8 @@ void NodeGraphWidget::wheelEvent(QWheelEvent *event)
 
     QPointF delta = event->pos() - graphToWindow(cursor_pos_in_graph);
     _offset += delta;
+
+    if (_currentTool) _currentTool->mouseWheel(event);
 
     repaint();
 }
@@ -143,6 +157,7 @@ void NodeGraphWidget::mousePressEvent(QMouseEvent *event)
                    nol = getHowerNode(windowToGraph(_start_drag));
         }
     }
+    if (_currentTool) _currentTool->mousePress(event);
 }
 
 void NodeGraphWidget::mouseMoveEvent(QMouseEvent *event)
@@ -151,10 +166,13 @@ void NodeGraphWidget::mouseMoveEvent(QMouseEvent *event)
     {
         _offset = _start_offset + (event->pos() - _start_drag);
         repaint();
+    } else if (!(_currentTool && _currentTool->mouseMove(event)))
+    {
+        setCursor(getHowerNode(event->pos())) ? Qt::OpenHandCursor : Qt::ArrowCursor
     }
     if (_mouse_dragging_l) {
-       nol->position() = QVector3D(event->pos());
-        repaint();
+       nol->setPosition(windowToGraph(event->pos()));
+       repaint();
     }
 }
 

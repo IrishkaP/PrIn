@@ -1,8 +1,10 @@
 #ifndef NODEGRAPHWIDGET_H
 #define NODEGRAPHWIDGET_H
-
+#include <memory>
 #include <QWidget>
 #include <nodegraph.h>
+
+class GraphTool;
 
 
 class NodeGraphWidget : public QWidget
@@ -14,8 +16,13 @@ public:
     NodeGraph * graph() const;
     void setGraph(NodeGraph * graph);
 
+    void setTool(std::shared_ptr<GraphTool> tool);
+
     QVector3D windowToGraph(const QPointF & point) const;
     QPointF graphToWindow(const QVector3D & pos) const;
+    Node * getHowerNode(QVector3D point);
+
+    float scale() const;
 
 protected:
 
@@ -26,10 +33,12 @@ protected:
     void mouseReleaseEvent(QMouseEvent * event) override;
 
     void drawEdge(QPainter & painter, Node * from, Node * to, float node_radius);
-    Node * getHowerNode(QVector3D point);
+
 
 private:
     NodeGraph * _graph = nullptr;
+
+    std::shared_ptr<GraphTool> _currentTool;
 
     float _scale = 1.0;
     QPointF _offset;

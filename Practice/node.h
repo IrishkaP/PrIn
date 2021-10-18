@@ -7,10 +7,11 @@
 class Node
 {
 public:
-    Node(const QVector3D & position = QVector3D());
+    explicit Node(const QVector3D & position = QVector3D());
     virtual ~Node();
 
     QVector3D position() const;
+    void setPosition(const QVector3D &position);
 
     std::set<Node * > neighbours() const;
 
