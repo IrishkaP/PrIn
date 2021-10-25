@@ -17,6 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_select_action_triggered();
+
+    void on_add_action_triggered();
+
+    void on_remove_action_triggered();
+
 private:
     Ui::MainWindow *ui;
     NodeGraphWidget * _graph_widget = nullptr;

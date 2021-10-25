@@ -16,20 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createnodetool.cpp \
     graphtool.cpp \
     main.cpp \
     mainwindow.cpp \
     node.cpp \
     nodegraph.cpp \
     nodegraphwidget.cpp \
+    removenodetool.cpp \
     selecttool.cpp
 
 HEADERS += \
+    createnodetool.h \
     graphtool.h \
     mainwindow.h \
     node.h \
     nodegraph.h \
     nodegraphwidget.h \
+    removenodetool.h \
     selecttool.h
 
 FORMS += \

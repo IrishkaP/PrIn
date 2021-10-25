@@ -61,7 +61,7 @@ void NodeGraphWidget::drawEdge(QPainter &painter, Node *from, Node *to, float no
     painter.restore();
 }
 
-Node *NodeGraphWidget::getHowerNode(QVector3D point)
+Node * NodeGraphWidget::getHowerNode(QVector3D point)
 {
     for (Node * node : graph()->nodes())
     {
@@ -69,7 +69,6 @@ Node *NodeGraphWidget::getHowerNode(QVector3D point)
         {
             return node;
         }
-
     }
     return nullptr;
 }
@@ -166,13 +165,13 @@ void NodeGraphWidget::mouseMoveEvent(QMouseEvent *event)
     {
         _offset = _start_offset + (event->pos() - _start_drag);
         repaint();
-    } else if (!(_currentTool && _currentTool->mouseMove(event)))
-    {
-        setCursor(getHowerNode(event->pos())) ? Qt::OpenHandCursor : Qt::ArrowCursor
-    }
+    }else
     if (_mouse_dragging_l) {
        nol->setPosition(windowToGraph(event->pos()));
        repaint();
+    } else if (!(_currentTool && _currentTool->mouseMove(event)))
+    {
+        setCursor(getHowerNode(QVector3D(event->pos())) ? Qt::OpenHandCursor : Qt::ArrowCursor);
     }
 }
 
@@ -182,12 +181,12 @@ void NodeGraphWidget::mouseReleaseEvent(QMouseEvent *event)
     {
         _mouse_dragging = false;
         setCursor(QCursor(Qt::ArrowCursor));
-    }
+    } else if (_currentTool) _currentTool->mouseRelease(event);
     if (!_mouse_dragging && event->button() == Qt::LeftButton) {
         _mouse_dragging_l = false;
         setCursor(QCursor(Qt::ArrowCursor));
 
-    }
+    } else if (_currentTool) _currentTool->mouseRelease(event);
 }
 
 QVector3D NodeGraphWidget::windowToGraph(const QPointF &point) const

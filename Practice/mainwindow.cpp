@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "selecttool.h"
+#include "createnodetool.h"
+#include "removenodetool.h"
 std::unique_ptr<NodeGraph> createTestGraph()
 {
     std::unique_ptr<NodeGraph> graph = std::make_unique<NodeGraph>();
@@ -44,3 +46,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_select_action_triggered()
+{
+    _graph_widget->setTool(std::shared_ptr<GraphTool>(new SelectTool(_graph.get(),_graph_widget)));
+}
+
+
+void MainWindow::on_add_action_triggered()
+{
+     _graph_widget->setTool(std::shared_ptr<GraphTool>(new CreateNodeTool(_graph.get(),_graph_widget)));
+}
+
+void MainWindow::on_remove_action_triggered()
+{
+    _graph_widget->setTool(std::shared_ptr<GraphTool>(new RemoveNodeTool(_graph.get(),_graph_widget)));
+}

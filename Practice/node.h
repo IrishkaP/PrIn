@@ -11,6 +11,7 @@ public:
     virtual ~Node();
 
     QVector3D position() const;
+
     void setPosition(const QVector3D &position);
 
     std::set<Node * > neighbours() const;
