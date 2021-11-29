@@ -29,3 +29,14 @@ void NodeGraph::removeNode(Node *node)
     }
     _nodes.erase(node);
 }
+
+void NodeGraph::removeAllNodes()
+{
+    for (auto i = _nodes.begin(); i != _nodes.end(); i++) {
+        _nodes.erase(i);
+    }
+}
+int NodeGraph::countNodes()
+{
+    return _nodes.size();
+}

@@ -21,22 +21,26 @@ SOURCES += \
     graphtool.cpp \
     main.cpp \
     mainwindow.cpp \
+    newgraph.cpp \
     node.cpp \
     nodegraph.cpp \
     nodegraphwidget.cpp \
     removenodetool.cpp \
-    selecttool.cpp
+    selecttool.cpp \
+    tofile.cpp
 
 HEADERS += \
     addneighbour.h \
     createnodetool.h \
     graphtool.h \
     mainwindow.h \
+    newgraph.h \
     node.h \
     nodegraph.h \
     nodegraphwidget.h \
     removenodetool.h \
-    selecttool.h
+    selecttool.h \
+    tofile.h
 
 FORMS += \
     mainwindow.ui
@@ -45,3 +49,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resourses.qrc

@@ -13,6 +13,8 @@ public:
     const std::set<Node *> & nodes() const;
     void add(Node * node);
     void removeNode(Node * node);
+    void removeAllNodes();
+    int countNodes();
 
 private:
     std::set<Node *> _nodes;

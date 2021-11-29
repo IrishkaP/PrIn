@@ -26,9 +26,14 @@ private slots:
 
     void on_add_neighbour_triggered();
 
+    void on_new_graph_action_triggered();
+
+    void on_to_file_action_triggered();
+
 private:
     Ui::MainWindow *ui;
     NodeGraphWidget * _graph_widget = nullptr;
     std::unique_ptr<NodeGraph> _graph;
 };
+
 #endif // MAINWINDOW_H
