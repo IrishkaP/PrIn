@@ -17,6 +17,7 @@ public:
     std::set<Node * > neighbours() const;
 
     void addNeighbour(Node * neighbour);
+    void removeNeighbour(Node *node);
 
     virtual float lengthToNeighbour(const Node * neighbour) const;
 

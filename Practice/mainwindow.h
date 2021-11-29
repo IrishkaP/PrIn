@@ -24,6 +24,8 @@ private slots:
 
     void on_remove_action_triggered();
 
+    void on_add_neighbour_triggered();
+
 private:
     Ui::MainWindow *ui;
     NodeGraphWidget * _graph_widget = nullptr;

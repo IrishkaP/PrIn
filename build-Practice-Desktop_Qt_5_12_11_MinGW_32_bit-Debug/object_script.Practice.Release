@@ -1,0 +1,12 @@
+release/addneighbour.o
+release/createnodetool.o
+release/graphtool.o
+release/main.o
+release/mainwindow.o
+release/node.o
+release/nodegraph.o
+release/nodegraphwidget.o
+release/removenodetool.o
+release/selecttool.o
+release/moc_mainwindow.o
+release/moc_nodegraphwidget.o

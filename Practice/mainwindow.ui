@@ -40,6 +40,8 @@
    <addaction name="remove_action"/>
    <addaction name="separator"/>
    <addaction name="add_action"/>
+   <addaction name="separator"/>
+   <addaction name="add_neighbour"/>
   </widget>
   <action name="select_action">
    <property name="text">
@@ -57,6 +59,14 @@
   <action name="add_action">
    <property name="text">
     <string>Добавить узел</string>
+   </property>
+  </action>
+  <action name="add_neighbour">
+   <property name="text">
+    <string>Добавить ребро</string>
+   </property>
+   <property name="toolTip">
+    <string>Добавление ребра</string>
    </property>
   </action>
  </widget>

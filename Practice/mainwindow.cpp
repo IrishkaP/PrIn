@@ -3,6 +3,7 @@
 #include "selecttool.h"
 #include "createnodetool.h"
 #include "removenodetool.h"
+#include "addneighbour.h"
 std::unique_ptr<NodeGraph> createTestGraph()
 {
     std::unique_ptr<NodeGraph> graph = std::make_unique<NodeGraph>();
@@ -61,4 +62,9 @@ void MainWindow::on_add_action_triggered()
 void MainWindow::on_remove_action_triggered()
 {
     _graph_widget->setTool(std::shared_ptr<GraphTool>(new RemoveNodeTool(_graph.get(),_graph_widget)));
+}
+
+void MainWindow::on_add_neighbour_triggered()
+{
+    _graph_widget->setTool(std::shared_ptr<GraphTool>(new AddNeighbourTool(_graph.get(),_graph_widget)));
 }

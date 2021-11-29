@@ -22,6 +22,15 @@ void Node::addNeighbour(Node *neighbour)
     if (neighbour == this) return;
     _neighbours.insert(neighbour);
 }
+void Node::removeNeighbour(Node *node) {
+    for (auto j = _neighbours.begin(); j!= _neighbours.end(); j++)
+    {
+        if (*j == node)
+        {
+            _neighbours.erase(node);
+        }
+    }
+}
 
 float Node::lengthToNeighbour(const Node *neighbour) const
 {
