@@ -77,5 +77,10 @@ void MainWindow::on_new_graph_action_triggered()
 
 void MainWindow::on_to_file_action_triggered()
 {
-    _graph_widget->setTool(std::shared_ptr<GraphTool>(new ToFile(_graph.get(),_graph_widget)));
+    saveTo("E:\\pech\\PrIn\\Practice\\output.text", _graph.get());
+}
+
+void MainWindow::on_from_file_action_triggered()
+{
+    load("E:\\pech\\PrIn\\Practice\\input.text", _graph.get(), _graph_widget);
 }

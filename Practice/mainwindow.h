@@ -30,6 +30,8 @@ private slots:
 
     void on_to_file_action_triggered();
 
+    void on_from_file_action_triggered();
+
 private:
     Ui::MainWindow *ui;
     NodeGraphWidget * _graph_widget = nullptr;

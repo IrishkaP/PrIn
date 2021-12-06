@@ -14,7 +14,7 @@ public:
     void add(Node * node);
     void removeNode(Node * node);
     void removeAllNodes();
-    int countNodes();
+    int countNodes() const;
 
 private:
     std::set<Node *> _nodes;

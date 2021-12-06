@@ -4,11 +4,10 @@
 #include "selecttool.h"
 #include "nodegraph.h"
 
-class ToFile: public GraphTool
-{
-public:
-    ToFile(NodeGraph * graph, NodeGraphWidget *graph_widget);
-    bool mousePress(QMouseEvent *event);
-};
+
+void saveTo(const QString & name, const NodeGraph * graph);
+
+void load (const QString & name,NodeGraph * graph, NodeGraphWidget *graph_widget);
+
 
 #endif // TOFILE_H

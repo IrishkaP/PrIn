@@ -36,7 +36,7 @@ void NodeGraph::removeAllNodes()
         _nodes.erase(i);
     }
 }
-int NodeGraph::countNodes()
+int NodeGraph::countNodes() const
 {
     return _nodes.size();
 }
